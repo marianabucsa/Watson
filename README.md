@@ -9,7 +9,8 @@
     <li><code>pip install nltk</code></li>
     <li><code>pip install openai</code></li>
  </ul>
-    If you have problems using OpenAI API, you should run: <code>openai migrate</code><br>
+    If you have problems using OpenAI API, you should upgrade the library using one of the commands: <code>pip install --upgrade openai</code><br> or <code>npm install -g openai</code> then run the command:  <code>openai migrate</code><br>
+    You can also upgrade the library directly from Pycharm by following the steps: <code>Open your PyCharm project and navigate to the project interpreter settings by going to "File" -> "Settings" -> "Project" -> "Project Interpreter" -> Select package -> Specify version -> "Install Package"</code> <br>
     From the OpenAI site <a href="https://platform.openai.com/api-keys">https://platform.openai.com/api-keys</a>, generate a key and incorporate it into the <code>Run.py</code> file at line 20.<br>
     Before starting the application, extract the files from "wiki-subset-20140602.tar", select the ones that don't start with a dot and put them into a folder called "dataset" in the root of the project.<br>
     <h1>Run Instructions:</h1>
@@ -40,6 +41,7 @@
     <li>Option 5: Takes as input the clue and the question and prints, with the use of CHATGPT, the first 10 titles as an answer to the question.</li>
     <li>Option 6: Takes as input the file <code>questions.txt</code>, generates answers for those questions, and measures the performances using the correct answers from the file.</li>
     <li>Option 7: Exit.</li>
+
 </body>
 </html>
 
