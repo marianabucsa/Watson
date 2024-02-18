@@ -27,11 +27,10 @@ class App:
             print("4. Top 10 with index")
             print("5. Top 10 with ChatGpt")
             print("6. Measure & Analyze")
-            print("8. Exit")
+            print("7. Exit")
             choice = input("Give a number :  ")
             if choice == "1":
-               # index.create()
-                break
+                index.create()
             elif choice == "2":
                 clue = input("Give clue: ")
                 question = input("Give question: ")
@@ -50,7 +49,7 @@ class App:
                 print(chat.get_top_titles(clue, question))
             elif choice == "6":
                 measure.print_results()
-            elif choice == "8":
+            elif choice == "7":
                 break
             else:
                 print("Invalid entry")
