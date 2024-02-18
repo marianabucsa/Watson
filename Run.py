@@ -17,7 +17,7 @@ class App:
 
     def run(self):
         index = Index(self.dataset_path, self.schema, self.language, self.index_path)
-        chat = ChatGpt("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", index)
+        chat = ChatGpt("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", index)
         measure = MeasurePerformance("questions.txt", index, chat)
         while True:
             print("Menu:")
@@ -30,7 +30,7 @@ class App:
             print("8. Exit")
             choice = input("Give a number :  ")
             if choice == "1":
-                # index.create()
+               # index.create()
                 break
             elif choice == "2":
                 clue = input("Give clue: ")

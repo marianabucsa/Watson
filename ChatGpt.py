@@ -20,7 +20,7 @@ class ChatGpt:
         request_body = self.__construct_request(clue, question, top_titles_index)
         response_body = self.__send_request(request_body)
         response = self.__decode_response(response_body)
-        print(response[:10])
+        return(response[:10])
 
     def __construct_request(self, clue, question, titles):
         request = [{"role": "system", "content": "You are a helpful assistant."},

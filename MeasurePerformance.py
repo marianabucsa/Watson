@@ -23,7 +23,11 @@ class MeasurePerformance:
         incorrect_answers = 0
         mrr = 0
         with tqdm(total=total_nr_questions) as pbar:
+            request_nr = 0
             for request in self.__dataset:
+                request_nr += 1
+                if request_nr % 3 == 0:
+                    time.sleep(60)
                 result = self.__chat_gpt.get_top_titles(request.clue, request.question)
                 if result[0] == request.answer:
                     correct_answers += 1
@@ -35,8 +39,10 @@ class MeasurePerformance:
                 pbar.update(1)
         precision_at_one = correct_answers / total_nr_questions
         mean_reciprocal_rank = mrr / total_nr_questions
+        print("\n")
         print(f"ChatGpt P@1: {precision_at_one}")
         print(f"ChatGpt MRR: {mean_reciprocal_rank}")
+        print("\n")
 
     def __get_results_index(self):
         total_nr_questions = len(self.__dataset)
@@ -57,12 +63,14 @@ class MeasurePerformance:
 
         precision_at_one = correct_answers / total_nr_questions
         mean_reciprocal_rank = mrr / total_nr_questions
+        print("\n")
         print(f"Index P@1: {precision_at_one}")
         print(f"Index MRR: {mean_reciprocal_rank}")
+        print("\n")
 
     def print_results(self):
         self.__get_results_index()
-        # self.__get_results_chat()
+        self.__get_results_chat()
 
     def __get_dataset(self):
         with open(self.__dataset_path, "r", encoding="utf-8") as file:
