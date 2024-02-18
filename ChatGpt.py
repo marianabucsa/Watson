@@ -1,4 +1,6 @@
-import openai
+from openai import OpenAI
+
+client = OpenAI(api_key="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")
 from openai import OpenAIError
 
 
@@ -29,18 +31,15 @@ class ChatGpt:
         for title in titles:
             request.append({"role": "user", "content": f"{title}"})
         request.append(
-            {"role": "user", "content": "Rerank the titles based on the provided clue and question. Do not write any other text except the title"})
+            {"role": "user", "content": "Rerank the 10 titles based on the provided clue and question. Do not write any other text except the title"})
         return request
 
     def __send_request(self, request_body):
-        openai.api_key = self.__api_key
         tries = 0
         while tries < 2:
             try:
-                response = openai.ChatCompletion.create(
-                    model="gpt-3.5-turbo",
-                    messages=request_body
-                )
+                response = client.chat.completions.create(model="gpt-3.5-turbo",
+                messages=request_body)
                 return response
             except OpenAIError as e:
                 print(f"Error: {e}")
@@ -48,7 +47,7 @@ class ChatGpt:
                 print("Retrying connection")
 
     def __decode_response(self, response_body):
-        titles = response_body.choices[0].message['content']
+        titles = response_body.choices[0].message.content
         lines = titles.split('\n')
         response = []
         for line in lines:

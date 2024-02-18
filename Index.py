@@ -23,7 +23,7 @@ class Index:
                 self.__index = index.open_dir(self.__output_path)
                 self.__query_parser = QueryParser("content", schema=self.__schema)
         finally:
-            print("An index does not exist. Please create one before any other action.")
+            print("Please create an index before any other action.")
 
     def create(self):
         self.__create_index_dir()  # create directory for index
